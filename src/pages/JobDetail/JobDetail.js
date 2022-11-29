@@ -46,7 +46,7 @@ const JobDetail = ({route}) => {
       <View style={styles.buttons_container}>
         <Button title="Submit" onPress={() => {}} iconName="login" />
         <Button
-          title="Favorite Jobs"
+          title="Favorite Job"
           onPress={() => handleAddFavorite(item)}
           iconName="cards-heart"
         />

@@ -3,9 +3,10 @@ import useFetch from '../../hooks/useFetch';
 import {API_URL} from '@env';
 import JobCard from '../../components/JobCard';
 import {FlatList, Text} from 'react-native';
+import Loading from '../../components/Loading';
 
 const JobList = ({navigation}) => {
-  const {loading, error, data} = useFetch(API_URL + 'jobs?page=2');
+  const {loading, error, data} = useFetch(API_URL + 'jobs?page=3');
 
   const handleJobSelect = item => {
     navigation.navigate('DetailPage', {item});
@@ -16,11 +17,19 @@ const JobList = ({navigation}) => {
   );
 
   if (loading) {
-    return <Text>Loading</Text>;
+    return <Loading />;
   }
 
   if (error) {
-    return <Text>Error</Text>;
+    return (
+      <Text
+        style={{
+          fontWeight: 'bold',
+          fontSize: 30,
+        }}>
+        Unexpected Error
+      </Text>
+    );
   }
 
   return <FlatList data={data.results} renderItem={renderJob} />;

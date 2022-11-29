@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './JobCard.style';
 import Button from '../Button';
 
-const JobCard = ({job, onSelect, isRemoveButton}) => {
+const JobCard = ({job, onSelect, isRemoveButton, removeJob}) => {
   return (
     <TouchableWithoutFeedback onPress={onSelect}>
       <View style={styles.container}>
@@ -15,7 +15,7 @@ const JobCard = ({job, onSelect, isRemoveButton}) => {
         <Text style={styles.level_name}>{job.levels[0].name}</Text>
         {isRemoveButton && (
           <View style={styles.button_container}>
-            <Button title="Remove" />
+            <Button title="Remove" onPress={removeJob} />
           </View>
         )}
       </View>
